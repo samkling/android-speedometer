@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Speedometer</string>
-    <string name="init_speed">0.0 MPH</string>
+    <string name="init_speed">-.- MPH</string>
+    <string name="mph"> MPH</string>
 </resources>

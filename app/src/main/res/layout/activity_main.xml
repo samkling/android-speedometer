@@ -13,17 +13,12 @@
     android:gravity="center">
 
     <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar2" />
-
-    <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/speedBar"
-        android:max="70" />
+        android:max="70"
+        android:layout_weight="1" />
 
     <TextView
         android:text="@string/init_speed"
@@ -31,19 +26,24 @@
         android:layout_height="wrap_content"
         android:id="@+id/speedView"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:gravity="center_horizontal" />
+        android:textSize="36sp"
+        android:layout_weight="1"
+        android:gravity="center" />
 
     <TextView
         android:text="@string/init_speed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/maxView"
-        android:gravity="center_horizontal" />
+        android:layout_weight="1"
+        android:gravity="center" />
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/maxBar" />
+        android:id="@+id/maxBar"
+        android:max="70"
+        android:layout_weight="1" />
 
 </LinearLayout>
