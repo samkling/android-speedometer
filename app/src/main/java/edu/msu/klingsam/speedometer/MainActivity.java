@@ -10,24 +10,29 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.Locale;
+
 public class MainActivity extends AppCompatActivity implements LocationListener{
 
     private static double MPH_MULTIPLIER = 2.23694;
+    private static double MILES_MULTIPLIER = 0.000621371;
 
     private double oldLatitude = 0;
     private double oldLongitude = 0;
     private double newLatitude = 0;
     private double newLongitude = 0;
+
     private float distance = 0;
+    private float odometer = 0;
 
     private long oldTime = 0;
     private long newTime = 0;
     private long time = 0;
 
     private double speed = 0;
-
     private double maxSpeed = 0;
 
+    //shaky start to the gps speed calculations
     private int count = 0;
 
 
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     public void onLocationChanged(Location location) {
         TextView speedView = (TextView)findViewById(R.id.speedView);
         TextView maxView = (TextView)findViewById(R.id.maxView);
+        TextView odometerView = (TextView)findViewById(R.id.odometerView);
 
        // speedView.setTextColor(Color.WHITE);
        // maxView.setTextColor(Color.WHITE);
@@ -61,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
             Location.distanceBetween(oldLatitude, oldLongitude, newLatitude, newLongitude, results);
             distance = results[0];
+            odometer += (distance*MILES_MULTIPLIER);
 
             if (oldTime == 0) {
                 oldTime = location.getTime();
@@ -80,12 +87,14 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
 
             if (speed < 100 && count > 5) {
-                speedView.setText(String.format("%.1f", speed*MPH_MULTIPLIER) + R.string.mph);
+                Locale l = Locale.US;
+                speedView.setText(String.format(l,"%.1f", speed*MPH_MULTIPLIER));
                 maxView.setText(String.format("%.1f", maxSpeed*MPH_MULTIPLIER) + " mph");
 
                 ProgressBar speedometer = (ProgressBar)findViewById(R.id.speedBar);
                 speedometer.setProgress((int)(speed*MPH_MULTIPLIER));
-                // speedometer.setProgress(1);
+
+
 
                 ProgressBar maxSpeedometer = (ProgressBar)findViewById(R.id.maxBar);
                 maxSpeedometer.setProgress((int)(maxSpeed*MPH_MULTIPLIER));

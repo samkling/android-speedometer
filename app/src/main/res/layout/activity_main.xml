@@ -20,15 +20,32 @@
         android:max="70"
         android:layout_weight="1" />
 
-    <TextView
-        android:text="@string/init_speed"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/speedView"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:textSize="36sp"
-        android:layout_weight="1"
-        android:gravity="top|center_horizontal" />
+        android:layout_weight="1">
+
+        <TextView
+            android:text="@string/init_speed"
+            android:layout_height="wrap_content"
+            android:id="@+id/speedView"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="36sp"
+            android:gravity="top|right|center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:text="@string/mph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mphView"
+            android:layout_weight="1"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            android:textSize="36sp"
+            android:paddingLeft="10dp" />
+    </LinearLayout>
 
     <TextView
         android:text="@string/init_odometer"
