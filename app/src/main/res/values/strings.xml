@@ -2,4 +2,6 @@
     <string name="app_name">Speedometer</string>
     <string name="init_speed">-.- MPH</string>
     <string name="mph"> MPH</string>
+    <string name="init_odometer">0.00 MILES</string>
+    <string name="init_trip">100 MILES</string>
 </resources>
