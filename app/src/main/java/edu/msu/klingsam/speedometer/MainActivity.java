@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
     public void onStartTrip(View view){
         startTrip = true;
+
+        //TODO: get button to do more
     }
 
     @Override
