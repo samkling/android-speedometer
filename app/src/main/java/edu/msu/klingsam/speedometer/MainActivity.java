@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
             Location.distanceBetween(oldLatitude, oldLongitude, newLatitude, newLongitude, results);
             distance = results[0];
-            odometer += (distance*MILES_MULTIPLIER);
+
 
             if (oldTime == 0) {
                 oldTime = location.getTime();
@@ -83,13 +83,15 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
             if (speed > maxSpeed && count++ > 10) {
                 maxSpeed = speed;
+                odometer += (distance*MILES_MULTIPLIER);
             }
 
 
             if (speed < 100 && count > 5) {
                 Locale l = Locale.US;
                 speedView.setText(String.format(l,"%.1f", speed*MPH_MULTIPLIER));
-                maxView.setText(String.format("%.1f", maxSpeed*MPH_MULTIPLIER) + " mph");
+                maxView.setText(String.format(l,"%.1f", maxSpeed*MPH_MULTIPLIER));
+                odometerView.setText(String.format(l,"%.2f",odometer));
 
                 ProgressBar speedometer = (ProgressBar)findViewById(R.id.speedBar);
                 speedometer.setProgress((int)(speed*MPH_MULTIPLIER));
