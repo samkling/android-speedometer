@@ -7,6 +7,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -32,6 +33,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
     private double speed = 0;
     private double maxSpeed = 0;
 
+    private boolean startTrip = false;
+
     //shaky start to the gps speed calculations
     private int count = 0;
 
@@ -47,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,500,1,this);
 
        // onLocationChanged(null);
+    }
+
+    public void onStartTrip(View view){
+        startTrip = true;
     }
 
     @Override
@@ -83,6 +90,10 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
 
             if (speed > maxSpeed && count++ > 10) {
                 maxSpeed = speed;
+
+            }
+
+            if (startTrip){
                 odometer += (distance*MILES_MULTIPLIER);
             }
 
@@ -96,7 +107,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
                 ProgressBar speedometer = (ProgressBar)findViewById(R.id.speedBar);
                 speedometer.setProgress((int)(speed*MPH_MULTIPLIER));
 
-
+                ProgressBar tripBar = (ProgressBar)findViewById(R.id.tripBar);
+                tripBar.setProgress((int)(odometer));
 
                 ProgressBar maxSpeedometer = (ProgressBar)findViewById(R.id.maxBar);
                 maxSpeedometer.setProgress((int)(maxSpeed*MPH_MULTIPLIER));

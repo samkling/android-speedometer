@@ -68,7 +68,7 @@
             android:text="@string/miles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView8"
+            android:id="@+id/milesView"
             android:layout_weight="1"
             android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
@@ -78,7 +78,7 @@
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar4"
+        android:id="@+id/tripBar"
         android:layout_weight="1" />
 
     <LinearLayout
@@ -88,10 +88,10 @@
         android:gravity="center">
 
         <TextView
-            android:text="@string/init_odometer"
+            android:text="@string/start_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
+            android:id="@+id/tripStartView"
             android:layout_weight="1"
             android:gravity="left" />
 
@@ -100,24 +100,42 @@
             android:layout_height="wrap_content"
             android:id="@+id/startButton"
             android:layout_weight="0"
-            android:layout_width="wrap_content" />
+            android:layout_width="wrap_content"
+            android:onClick="onStartTrip" />
 
         <TextView
             android:text="@string/init_trip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:id="@+id/tripEndView"
             android:layout_weight="1"
             android:gravity="right" />
+
     </LinearLayout>
 
-    <TextView
-        android:text="@string/init_speed"
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/maxView"
         android:layout_weight="1"
-        android:gravity="bottom|center_horizontal" />
+        android:gravity="bottom">
+
+        <TextView
+            android:text="@string/init_speed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/maxView"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="10dp" />
+
+        <TextView
+            android:text="@string/mph"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/highMphView"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
