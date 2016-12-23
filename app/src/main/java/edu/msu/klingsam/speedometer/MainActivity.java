@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+//TODO: MAYBE MAKE IT MORE ASTHETICALLY PLEASING
+
 public class MainActivity extends AppCompatActivity implements LocationListener{
 
     private static double MPH_MULTIPLIER = 2.23694;
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener{
         startTrip = true;
 
         //TODO: get button to do more
+
     }
 
     @Override
